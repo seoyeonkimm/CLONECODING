@@ -21,7 +21,10 @@ function deleteToDo(event){
     //event.target.parentElement.innerText -> text내용과 버튼
 
     const li = event.target.parentElement;
+    toDos = toDos.filter(toDo => toDo.id !== parseInt(li.id));//여기서 이 toDo는 toDos DB에 있는 요소 중 하나임!, need to change format of ID String to Int
     li.remove();
+    //다 지운뒤에 saveToDos는 한 번더 불러야 하는거 주의
+    saveToDos();//&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 }
 
 //입력내용을 투두리스트로 보여주는 기능
