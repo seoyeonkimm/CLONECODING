@@ -51,7 +51,14 @@ function handleToDoSubmit(event){
     const newTodo = toDoInput.value;//input의 현재 value를 새로운 변수에 복사하는 것
     console.log(toDoInput.value);//아래처럼 비우기 전에 값을 어딘가에 저장
     toDoInput.value = "";//그리고 비움!
-    toDos.push(newTodo);//array애 추가
+    
+    const newTodoObj = {
+        text : newTodo,
+        id : Date.now(),
+    }
+    //git test
+    //toDos.push(newTodo);//array애 추가 -> 텍스트가 아닌 객체로 바꾸기
+    toDos.push(newTodoObj);
     paintTodo(newTodo);
     saveToDos();//saveToDos 함수가 호출되는 시점에는 newTodo는 array에 들어있음!
 }
