@@ -32,8 +32,10 @@ function paintTodo(newTodo){
     //  <button></button>
     //</li>
     const li = document.createElement("li");//li 만듦
+    //object화 하면서 아래코드 추가
+    li.id = newTodo.id;
     const span = document.createElement("span");//span 만듦
-    span.innerText = newTodo;
+    span.innerText = newTodo.text;//span.innerText = newTodo;에서 수정
     const button = document.createElement("button");
     button.innerText = "Delete";
 
@@ -56,10 +58,9 @@ function handleToDoSubmit(event){
         text : newTodo,
         id : Date.now(),
     }
-    //git test
     //toDos.push(newTodo);//array애 추가 -> 텍스트가 아닌 객체로 바꾸기
     toDos.push(newTodoObj);
-    paintTodo(newTodo);
+    paintTodo(newTodoObj);
     saveToDos();//saveToDos 함수가 호출되는 시점에는 newTodo는 array에 들어있음!
 }
 
@@ -78,6 +79,14 @@ if(savedToDos !==null){
     //parsedToDos.forEach(sayHello);//각 엘리먼트에 대해 한번씩 순회 
     //parsedToDos.forEach((item) => console.log("this is the turn of " + item)); 
     toDos = parsedToDos;//데이터복원!!!!!
+
+    //*******forEach함수는 paintTodo를 parseToDos 배열 요소마다 실행한다는 것 주의하기!!!각 오브젝트나 아이템을 주게됨!!********* */
     parsedToDos.forEach(paintTodo);//paintTodo는 텍스트를 받는데, Javascript는 그 텍스트를 paintToDo에게전달해줌
     //다시 말해, 자바스크립트는 paintToDo에 "a",...,"d"를 넣어주기 때문 paintToDo("a")처럼! 
+    //객체화 하면서 [{text: "a", id:12121212}]같은 형태로 호출하게 된다
 }
+
+function sexyFilter(){
+
+}
+[1, 2, 3, 4].filter(sexyFilter);
