@@ -10,9 +10,21 @@ const images = [
 
 const chosenImage = images[Math.floor(Math.random() * images.length)];
 
-const bgImage = document.createElement("img");
-bgImage.src = `img/${chosenImage}`;
+//const bgImage = document.createElement("img");
+//bgImage.src = `img/${chosenImage}`;
 
-document.body.appendChild(bgImage);
+//document.body.appendChild(bgImage);
 
-console.log(bgImage);
+//console.log(bgImage);
+console.log(chosenImage);
+
+//const backgroundImage = "url('img/" + chosenImage + "')";
+//console.log( backgroundImage);
+
+const paintImage = (chosenImage) => {
+    const backgroundImage = "url('img/" + chosenImage + "')";
+    console.log( backgroundImage);
+    document.body.style.backgroundImage =  backgroundImage;
+}; 
+
+paintImage(chosenImage);
